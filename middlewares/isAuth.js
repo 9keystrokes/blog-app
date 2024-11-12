@@ -30,33 +30,33 @@ module.exports = (req, res, next) => {
 
     next()
 }
-const auth = async (req,res,next) => {
-    try {
-        const authHeader = req.get('Authorization')
-        if (!authHeader) {
-            const error = new Error('Not authenticated!')
-            error.status = 401
-            throw error
-        }
-        const token = authHeader.replace('Bearer', '').trim()
+// const auth = async (req,res,next) => {
+//     try {
+//         const authHeader = req.get('Authorization')
+//         if (!authHeader) {
+//             const error = new Error('Not authenticated!')
+//             error.status = 401
+//             throw error
+//         }
+//         const token = authHeader.replace('Bearer', '').trim()
 
-        const decoded  = jwt.verify(token, process.env.SECRET)
+//         const decoded  = jwt.verify(token, process.env.SECRET)
 
-        const user  = await User.findOne({ _id: decoded._id, 
-            'tokens.token': token})
+//         const user  = await User.findOne({ _id: decoded._id, 
+//             'tokens.token': token})
 
-        if(!user){
-            throw new Error()
-        }
-        //req.token = token
-        req.user = user
-        console.log(req.user)
-        next()
-    } catch (error) {
-        // console.log(error)
-        // res.status(401).send({error:'Please authenticate!'})
-        next(error)
-    }
-}
+//         if(!user){
+//             throw new Error()
+//         }
+//         //req.token = token
+//         req.user = user
+//         console.log(req.user)
+//         next()
+//     } catch (error) {
+//         // console.log(error)
+//         // res.status(401).send({error:'Please authenticate!'})
+//         next(error)
+//     }
+// }
 
-module.exports = auth
+// module.exports = auth

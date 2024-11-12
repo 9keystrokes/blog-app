@@ -76,7 +76,7 @@ const login = async (req, res, next) => {
                 role: foundUser.role,
                 name: foundUser.name,
                 userId: foundUser._id.toString()
-            }, process.env.SECRET || 'default_fallback_secret', {
+            }, process.env.SECRET, {
                 expiresIn: '2h'
             })
             const { _id,name,email,role } = foundUser;
