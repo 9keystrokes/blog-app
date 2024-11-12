@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "engines": {
     "node": "20.x",
-    "npm": "7.x"
+    "npm": "10.x"
   },
   "description": "This must be a fully built project on Node.js. ",
   "main": "server.js",
